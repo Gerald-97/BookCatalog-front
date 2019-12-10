@@ -42,16 +42,12 @@ export default new Vuex.Store({
   },
   actions: {
     submitAdmin(context, val) {
-      console.log(val)
-
       Axios.post('https://gerald-book-catalog.herokuapp.com/admin/signup', {
         name: val.name,
         email: val.email,
         password: val.password
       })
       .then( response => {
-        console.log(response)
-
         let responseObject = {
           type: "success",
           message: response.data.message
@@ -60,12 +56,10 @@ export default new Vuex.Store({
       })
 
       .catch(error => {
-        console.log(error.response)
         let responseObject = {
           type: 'failed',
-          message: error.response.data.message
+          message: error.response.data.message || 'Invalid Registration'
         }
-        console.log("error", error);
 
         context.commit('getResponse', responseObject);
       })
@@ -77,7 +71,6 @@ export default new Vuex.Store({
         password: credentials.password
       })
       .then(response => {
-        console.log('response', response);
         const token = response.data.token;
         
         let responseObject = {
@@ -96,7 +89,6 @@ export default new Vuex.Store({
           type: 'failed',
           message: error.response.data.message
         }
-        console.log('error', error);
 
         context.commit('getResponse', responseObject)
       })

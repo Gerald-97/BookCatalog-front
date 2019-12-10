@@ -6,16 +6,19 @@
     </p>
     <form class="signup__form" @submit.prevent="adminSubmit">
       <div class="form__item">
-          <label for="name">NAME: </label>
+          <label for="name">Name: </label>
           <input type="text" name="name" id="" v-model="name">
       </div>
       <div class="form__item">
-          <label for="email">EMAIL: </label>
+          <label for="email">Email: </label>
           <input type="email" name="email" id="" v-model="email">
       </div>
       <div class="form__item">
-          <label for="password">PASSWORD: </label>
+          <label for="password">Password: </label>
           <input type="password" name="password" id="" v-model="password">
+          <!-- <p class="alert__message" v-if="!passLength">
+            Your password must be more than 7 characters
+          </p> -->
       </div>
       <button type="submit" class="btn-submit">SUBMIT</button> <br>
       <router-link to="/login" class="alt-login">Already registered? Login</router-link>
@@ -42,10 +45,10 @@ export default {
   methods: {
     ...mapActions(['submitAdmin']),
     adminSubmit() {
-      this.submitAdmin({
-        name: this.name,
-        email: this.email,
-        password: this.password
+        this.submitAdmin({
+          name: this.name,
+          email: this.email,
+          password: this.password
       })
     }
   },
@@ -79,24 +82,27 @@ export default {
   width: 500px;
 }
 .form__item {
+  width: 370px;
   display: flex;
-  padding: 2rem;
+  padding: 1.5rem;
   justify-content: space-between;
   align-items: center;
   text-align: center;
 }
 .alert__message {
   color: red;
+  margin: 0;
 }
 .alt-login {
   text-decoration: none;
-  color:  darkslateblue;
+  color:  #483d8b;
 }
 .alt-login:hover {
   color: darkblue;
 }
 .form__item input{
   width: 270px;
+  padding: 12px 12px;
   height: 25px;
   background: #FFFFFF;
   border: 0.5px solid #132227;
@@ -111,6 +117,7 @@ export default {
   background-color: #132227;
   color: #F1E0D6;
   border-radius: 15px;
+  transition-duration: 0.1s;
 }
 .btn-submit:hover{
   background-color: #b3babb;

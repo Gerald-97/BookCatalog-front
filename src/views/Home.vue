@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Welcome to Reader's Land</h1>
+    <h2>Welcome to Reader's Land</h2>
     <div class="img__wrapper">
       <img src="@/assets/Books.jpeg" alt="Books">
     </div>
@@ -13,7 +13,7 @@
 export default {
   name: 'home',
   components: {
-
+   
   },
   methods: {
     enterShelf(){
@@ -35,6 +35,8 @@ export default {
   color: #F1E0D6;
   border-radius: 12px;
   font-size: 16px;
+  font-family: 'Merienda', 'Roboto', sans-serif;
+  transition-duration: 0.1s;
 }
 .btn-enter:hover{
   cursor: pointer;

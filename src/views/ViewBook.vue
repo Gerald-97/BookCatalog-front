@@ -46,7 +46,6 @@ export default {
     mounted() {
         this.$http.get(`https://gerald-book-catalog.herokuapp.com/bookshelf/${this.$route.params.id}`)
         .then(response => {
-            console.log(response)
             this.book = response.data.data
         })
         .catch(error => {
@@ -62,14 +61,7 @@ export default {
         },
         delBook() {
             this.$http.delete(`https://gerald-book-catalog.herokuapp.com/bookshelf/${this.book._id}`)
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error.response)
-            })
             .finally(() => {
-                console.log('Fetching');
                 this.$router.push({name: 'Gallery'})
             }) 
         }
@@ -112,9 +104,10 @@ export default {
 }
 .editArea {
     margin-top: 2rem;
+    padding-bottom: 2rem;
     margin: auto;
     display: flex;
-    width: 60%;
+    width: 50%;
     min-width: 500px;
     justify-content: space-around;
 }
@@ -125,21 +118,24 @@ export default {
     background-color: #132227;
     color: #F1E0D6;
     border-radius: 15px;
+    transition-duration: 0.1s;
 }
 .btn-delete,
 .btn-edit {
     border: none;
     background-color: #132227;
     color: #F1E0D6;
+    font-size: 16px;
     border-radius: 4px;
-    padding: 10px 35px;
+    padding: 7px 35px;
+    transition-duration: 0.1s;
 }
 .btn-delete:hover,
 .btn-get:hover,
 .btn-edit:hover{
     background-color: #b3babb;
     color: #0f1011;
-    font-weight: bold;
+    /* font-weight: bold; */
     cursor: pointer;
 }
 </style>

@@ -20,11 +20,6 @@ import { mapGetters } from 'vuex';
 
 export default {
     name: 'Gallery',
-    // props() {
-    //     return {
-    //         pageName: 'Bookshelf'
-    //     }
-    // },
     components: {
         BookCard
     },
@@ -46,15 +41,12 @@ export default {
         fetchBooks() {
             this.$http.get('https://gerald-book-catalog.herokuapp.com/bookshelf/all')
             .then(response => {
-                console.log(response)
                 this.Books = response.data.data
             })
             .catch(error => {
                 console.log(error.response)
+                // return next(error)
             })
-            .finally(() => {
-                console.log('Fetching');
-            }) 
         }
     }
 }
@@ -63,6 +55,7 @@ export default {
 .gallery {
     width: 100%;
     text-align: center;
+    margin-bottom: 2rem;
 }
 .gallery__body {
     margin: auto;
@@ -78,6 +71,7 @@ export default {
     background-color: #132227;
     color: #F1E0D6;
     border-radius: 15px;
+    transition-duration: 0.1s;
 }
 .btn-create:hover{
     background-color: #b3babb;

@@ -37,6 +37,7 @@ export default {
     margin: 15px;
     -webkit-box-shadow: 0px 0px 15px 6px #132227; 
     box-shadow: 0px 0px 10px 2px #132227;
+    transition-duration: 0.1s;
 }
 .book-card:hover {
     -webkit-box-shadow: 0px 0px 13px 5px #132227; 

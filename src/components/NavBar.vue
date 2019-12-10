@@ -7,21 +7,19 @@
                     <h1>Catalog</h1>
                 </div>
             </div>
-            <h1> Bookshelf
-                <!-- {{pageName}} -->
-            </h1>
+            <h1> Library </h1>
             <div class="body">
                 <div id="nav">
                     <div class="nav__links">
                         <div class="nav__link__item">
-                            <router-link to="/bookshelf">BOOKSHELF</router-link>
+                            <router-link to="/bookshelf">Bookshelf</router-link>
                         </div>
                         <ul class="nav__links" v-if="!isLoggedIn">
                             <li class="nav__link__item">
-                                <router-link to="/sign-in">REGISTER</router-link>
+                                <router-link to="/sign-in">Register</router-link>
                             </li>
                             <li class="nav__link__item">
-                                <router-link to="/login">LOGIN</router-link>
+                                <router-link to="/login">Login</router-link>
                             </li>
                         </ul>
                         <button class="btn-logout nav__link__item" @click="logout" v-else>LOGOUT</button>
@@ -100,6 +98,7 @@ export default {
     background-color: #132227;
     color: #F1E0D6;
     border-radius: 15px;
+    transition-duration: 0.1s;
 }
 .btn-logout:hover{
     cursor: pointer;
