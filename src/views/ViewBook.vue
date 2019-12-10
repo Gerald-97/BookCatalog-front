@@ -49,7 +49,7 @@ export default {
             this.book = response.data.data
         })
         .catch(error => {
-            console.log(error.response)
+            alert(error.response)
         })
     },
     methods: {
@@ -61,9 +61,8 @@ export default {
         },
         delBook() {
             this.$http.delete(`https://gerald-book-catalog.herokuapp.com/bookshelf/${this.book._id}`)
-            .finally(() => {
-                this.$router.push({name: 'Gallery'})
-            }) 
+
+            this.$router.push({name: 'Gallery'})
         }
     }
 }

@@ -1,6 +1,9 @@
 <template>
     <div class="signup">
         <h2>NEW BOOK</h2>
+        <p class="alert__message">
+            {{ apiResponse.message }}
+        </p>
         <form action="" class="book__form" @submit.prevent="createBook">
             <div class="form__item">
                 <label for="name">Title: </label>
@@ -39,6 +42,10 @@ export default {
                 image: '',
                 published: '',
                 description: ''
+            },
+            apiResponse: {
+                type: '',
+                message: ''
             }
         }
     },
@@ -46,7 +53,10 @@ export default {
         createBook() {
             this.$http.post('https://gerald-book-catalog.herokuapp.com/bookshelf/add', this.addBook)
             .then(response => {
-                console.log(response)
+                this.apiResponse = {
+                    type: "success",
+                    message: response.data.message
+                }
                 this.addBook = {
                     title: '',
                     author: '',
@@ -56,11 +66,21 @@ export default {
                 }
             })
             .catch(error => {
-                alert(error.response.message);
+                this.apiResponse = {
+                    type: "failed",
+                    message: error.response.data.message
+                }
             })
-            .finally(() => {
-                this.$router.push({name: 'Gallery'})
-            }) 
+        }
+    },
+    watch: {
+        apiResponse(val) {
+            if (val.type == 'success') {
+                setTimeout(() => {
+                    this.$router.push({name: 'Gallery'})
+                    val.message = ''
+                }, 500)
+            }
         }
     }
 }
@@ -82,6 +102,10 @@ export default {
     margin: auto;
     text-align: center;
     width: 500px;
+}
+.alert__message {
+    color: red;
+    margin: 0;
 }
 .form__item {
     width: 320px;

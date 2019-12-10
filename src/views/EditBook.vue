@@ -1,6 +1,9 @@
 <template>
     <div class="signup">
         <h2>EDIT BOOK</h2>
+        <p class="alert__message">
+            {{ apiResponse.message }}
+        </p>
         <form action="" class="book__form" @submit.prevent="newBook">
             <div class="form__item">
                 <label for="name">Title: </label>
@@ -38,6 +41,10 @@ export default {
                 image: '',
                 published: '',
                 description: ''
+            },
+            apiResponse: {
+                type: '',
+                message: ''
             }
         }
     },
@@ -47,13 +54,20 @@ export default {
             this.editBook = response.data.data
         })
         .catch(error => {
-            console.log(error)
+            this.apiResponse = {
+                type: "failed",
+                message: error.response.data.message
+            }
         })
     },
     methods: {
         newBook() {
             this.$http.put(`https://gerald-book-catalog.herokuapp.com/bookshelf/${this.$route.params.id}`, this.editBook)
             .then(response => {
+                this.apiResponse = {
+                    type: "success",
+                    message: response.data.message
+                }
                 this.editBook = {
                     title: '',
                     author: '',
@@ -61,14 +75,23 @@ export default {
                     published: '',
                     description: ''
                 }
-                console.log(response)
             })
             .catch(error => {
-                alert(error.response.message)
+                this.apiResponse = {
+                    type: "failed",
+                    message: error.response.data.message
+                }
             })
-            .finally(() => {
-                this.$router.push({name: 'Gallery'})
-            })
+        }
+    },
+    watch: {
+        apiResponse(val) {
+            if (val.type == 'success') {
+                setTimeout(() => {
+                    this.$router.push({name: 'Gallery'})
+                    val.message = ''
+                }, 500)
+            }
         }
     }
 }
@@ -91,6 +114,10 @@ export default {
     font-weight: normal;
     font-size: 36px;
     line-height: 42px;
+}
+.alert__message {
+    color: red;
+    margin: 0;
 }
 .form__item {
     display: flex;

@@ -44,8 +44,7 @@ export default {
                 this.Books = response.data.data
             })
             .catch(error => {
-                console.log(error.response)
-                // return next(error)
+                alert(error.response)
             })
         }
     }
