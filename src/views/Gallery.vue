@@ -78,4 +78,10 @@ export default {
     font-weight: bold;
     cursor: pointer;
 }
+.btn-create:focus:not(.focus-visible) {
+  outline: none;
+}
+.btn-create:focus-visible {
+  outline: 1px solid blue;
+}
 </style>

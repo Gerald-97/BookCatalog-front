@@ -44,4 +44,10 @@ export default {
   color: #0f1011;
   font-weight: bold;
 }
+.btn-enter:focus:not(.focus-visible) {
+  outline: none;
+}
+.btn-enter:focus-visible {
+  outline: 1px solid blue;
+}
 </style>

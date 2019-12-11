@@ -135,7 +135,16 @@ export default {
 .btn-edit:hover{
     background-color: #b3babb;
     color: #0f1011;
-    /* font-weight: bold; */
     cursor: pointer;
+}
+.btn-delete:focus:not(.focus-visible),
+.btn-get:focus:not(.focus-visible),
+.btn-edit:focus:not(.focus-visible) {
+  outline: none;
+}
+.btn-delete:focus-visible,
+.btn-get:focus-visible,
+.btn-edit:focus-visible {
+  outline: 1px solid blue;
 }
 </style>

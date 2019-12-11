@@ -163,4 +163,10 @@ export default {
     font-weight: bold;
     cursor: pointer;
 }
+.btn-submit:focus:not(.focus-visible) {
+  outline: none;
+}
+.btn-submit:focus-visible {
+  outline: 1px solid blue;
+}
 </style>
