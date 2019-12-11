@@ -57,6 +57,9 @@ export default {
     align-items: center;
     color: #132227;
 }
+.navbar > h1 {
+    margin: 30px;
+}
 .nav__links {
     display: flex;
     list-style: none;
@@ -71,6 +74,7 @@ export default {
 }
 .container hr{
     margin: 0;
+    width: 100%;
 }
 #app_logo{
     width: 200px;
@@ -114,4 +118,14 @@ export default {
   color: #132227;
   display: flex;
 }
+/* @media screen and (min-width: 768px) {
+  #app_logo{
+        width: 150px;
+        height: 100px;
+        background-color: #132227;
+        font-family: 'Merienda', cursive;
+        color: #F1E0D6;
+        text-align: left;
+    }
+} */
 </style>
