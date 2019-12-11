@@ -61,8 +61,9 @@ export default {
         },
         delBook() {
             this.$http.delete(`https://gerald-book-catalog.herokuapp.com/bookshelf/${this.book._id}`)
-
-            this.$router.push({name: 'Gallery'})
+            .then(() => {
+                this.$router.push({name: 'Gallery'})
+            })
         }
     }
 }
